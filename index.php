@@ -7,12 +7,9 @@ session_start();
 <meta name="description" content="An online version of the Lingo gameshow." />
 <meta name="keywords" content="media, entertainment, fun, games" />
 <meta name="author" content="Briton Westerhaus" />
-<script src="script/comment.js"></script>
-<?php include("script/content.php"); ?>
-<?php include("begin.html");?>
 <p class="titlebar"></p>
 <div class="content">
-<form action="Lingo.html" method="post">
+<form action="index.php" method="post">
 <table border="border">
 <tr>
 	<th colspan = "5">Sent from Server to Player</th>
@@ -161,7 +158,7 @@ if($_SESSION[gameover] == 1):
 	unset($_SESSION[server]);
 	unset($_SESSION[word]);
 	unset($_SESSION[guesses]);
-	echo '<form action="Lingo.html" method="post">';
+	echo '<form action="index.php" method="post">';
 	echo '<input type="submit" value="Play Again?" />';
 	echo '</form>';
 endif;
@@ -174,19 +171,6 @@ endif;
 <br />
 <a href="comment.php?category=games&content=Lingo">Comment</a>
 <br />
-<?php DisplayShareLinks(); ?><br /><button id="butt" onclick="showcomment();">Post a Comment</button>
-<form id="commentarea" action="comment.php" method="post" style="visibility:hidden" onsubmit"return validate(<?php echo isset($_SESSION[username]); ?>)">
-</form>
-<?php CommentsAndRating(); ?>
-<table class="comments" border="2">
-<tr>
-<th class="user">User</th>
-<th class="comment">Comment</th>
-<th class="rating">Rating</th>
-<th>Date</th>
-</tr>
-<?php DisplayComments(); ?>
-</table>
 </div>
 </center>
 </div>

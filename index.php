@@ -3,7 +3,7 @@ session_start();
 ?>
 <html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title> Mediaclambake - Lingo by Briton Westerhaus.</title>
+<title>Briton Westerhaus - Lingo</title>
 <meta name="description" content="An online version of the Lingo gameshow." />
 <meta name="keywords" content="media, entertainment, fun, games" />
 <meta name="author" content="Briton Westerhaus" />

@@ -24,8 +24,8 @@ $guessarray = posttostandard($_POST);
 processguess($guessarray);
 endif;
 function initializegamearray(){
-	$dictionary = file("media/words5.txt");
-	$randfinish = rand(1, filesize("media/words5.txt")/7);
+	$dictionary = file("words5.txt");
+	$randfinish = rand(1, filesize("words5.txt")/7);
 	$word = $dictionary[$randfinish];
 	$_SESSION[server] =  array(
 	array('<font color = "FF0000">' . strtoupper($word{0}) . '<font />',"&nbsp","&nbsp","&nbsp","&nbsp"),
@@ -168,9 +168,6 @@ endif;
 <p>A <font color = "0000ff">BLUE UPPER CASE</font> letter means that the letter you guessed is in the word, but not at the position you guessed.</p>
 <p>A black lower case letter means the letter you guessed is not in the word at all.</p>
 <p>You have five guesses to get the word right.  If you don't get the word right after the fifth guess, you lose!</p>
-<br />
-<a href="comment.php?category=games&content=Lingo">Comment</a>
-<br />
 </div>
 </center>
 </div>

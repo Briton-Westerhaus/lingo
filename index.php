@@ -28,19 +28,19 @@ function initializegamearray(){
 	$randfinish = rand(1, filesize("words5.txt")/7);
 	$word = $dictionary[$randfinish];
 	$_SESSION['server'] =  array(
-	array('<font color = "FF0000">' . strtoupper($word{0}) . '<font />',"&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"));
+	array('<font color = "FF0000">' . strtoupper($word{0}) . '<font />',"&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"));
 	$_SESSION['user'] = array(
 	array('<input type = "text" name = "0" size = "1" maxlength = "1">','<input type = "text" name = "1" size = "1" maxlength = "1">','<input type = "text" name = "2" size = "1" maxlength = "1">','<input type = "text" name = "3" size = "1" maxlength = "1">','<input type = "text" name = "4" size = "1" maxlength = "1">'),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
-	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"));
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
+	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"));
 	$_SESSION['word'] = trim($word);
 	$_SESSION['guesses'] = 0;
 	$_SESSION['gameover'] = 0;
@@ -85,12 +85,12 @@ function serverdisplay($guesses, $wordarray){
 			if($temp == $temptwo && strtolower($wordarray[$temptwo]) == strtolower($guesses[$temp])):
 				$_SESSION['server'][$num][$temp] = ('<font color = "ff0000">' . strtoupper($guesses[$temp]) . '<font />');
 			endif;
-			if(strtolower($wordarray[$temptwo]) == strtolower($guesses[$temp]) && $temp != $temptwo && $_SESSION['server'][$num][$temp] == "&nbsp" && strtolower($wordarray[$temptwo]) != strtolower($guesses[$temptwo])):
+			if(strtolower($wordarray[$temptwo]) == strtolower($guesses[$temp]) && $temp != $temptwo && $_SESSION['server'][$num][$temp] == "&nbsp;" && strtolower($wordarray[$temptwo]) != strtolower($guesses[$temptwo])):
 				$_SESSION['server'][$num][$temp] = ('<font color = "0000ff">' . strtoupper($guesses[$temp]) . '<font />');
 			endif;
 			$temptwo++;
 		endwhile;
-		if($_SESSION['server'][$num][$temp] == "&nbsp"):
+		if($_SESSION['server'][$num][$temp] == "&nbsp;"):
 			$_SESSION['server'][$num][$temp] = strtolower($guesses[$temp]);
 		endif;
 		$temptwo = 0;

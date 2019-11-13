@@ -66,7 +66,7 @@ function processguess($guessarray){
 	$_SESSION['user'][$temp] = $guessarray;
 	if($_SESSION['guesses'] == 5 && strtolower($_SESSION['word']) != strtolower(implode($guessarray))):
 		echo '<h3 align ="center">You lost. </h3><br />';
-		echo "The word was $_SESSION['word'].";
+		echo "The word was $_SESSION[word].";
 		$_SESSION['gameover'] = 1;
 	endif;
 	$temp = 0;

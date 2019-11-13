@@ -18,7 +18,6 @@ session_start();
 <?php
 if(!IsSet($_SESSION['server'])):
 initializegamearray();
-View();
 else:
 $guessarray = posttostandard($_POST);
 processguess($guessarray);

@@ -16,7 +16,7 @@ session_start();
 	<th colspan = "5">Entered by Player</th>
 </tr>
 <?php
-if(!IsSet($_SESSION[server])):
+if(!IsSet($_SESSION['server'])):
 initializegamearray();
 View();
 else:
@@ -27,7 +27,7 @@ function initializegamearray(){
 	$dictionary = file("words5.txt");
 	$randfinish = rand(1, filesize("words5.txt")/7);
 	$word = $dictionary[$randfinish];
-	$_SESSION[server] =  array(
+	$_SESSION['server'] =  array(
 	array('<font color = "FF0000">' . strtoupper($word{0}) . '<font />',"&nbsp","&nbsp","&nbsp","&nbsp"),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
@@ -83,21 +83,21 @@ function serverdisplay($guesses, $wordarray){
 	while($temp < 5):
 		while($temptwo < 5):
 			if($temp == $temptwo && strtolower($wordarray[$temptwo]) == strtolower($guesses[$temp])):
-				$_SESSION[server][$num][$temp] = ('<font color = "ff0000">' . strtoupper($guesses[$temp]) . '<font />');
+				$_SESSION['server'][$num][$temp] = ('<font color = "ff0000">' . strtoupper($guesses[$temp]) . '<font />');
 			endif;
-			if(strtolower($wordarray[$temptwo]) == strtolower($guesses[$temp]) && $temp != $temptwo && $_SESSION[server][$num][$temp] == "&nbsp" && strtolower($wordarray[$temptwo]) != strtolower($guesses[$temptwo])):
-				$_SESSION[server][$num][$temp] = ('<font color = "0000ff">' . strtoupper($guesses[$temp]) . '<font />');
+			if(strtolower($wordarray[$temptwo]) == strtolower($guesses[$temp]) && $temp != $temptwo && $_SESSION['server'][$num][$temp] == "&nbsp" && strtolower($wordarray[$temptwo]) != strtolower($guesses[$temptwo])):
+				$_SESSION['server'][$num][$temp] = ('<font color = "0000ff">' . strtoupper($guesses[$temp]) . '<font />');
 			endif;
 			$temptwo++;
 		endwhile;
-		if($_SESSION[server][$num][$temp] == "&nbsp"):
-			$_SESSION[server][$num][$temp] = strtolower($guesses[$temp]);
+		if($_SESSION['server'][$num][$temp] == "&nbsp"):
+			$_SESSION['server'][$num][$temp] = strtolower($guesses[$temp]);
 		endif;
 		$temptwo = 0;
 		$temp++;
 	endwhile;
 }
-$server = $_SESSION[server];
+$server = $_SESSION['server'];
 $user = $_SESSION[user];
 echo "<tr>";
 	$temparray = current($server);
@@ -155,7 +155,7 @@ endif;
 echo "</form>";
 if($_SESSION[gameover] == 1):
 	unset($_SESSION[user]);
-	unset($_SESSION[server]);
+	unset($_SESSION['server']);
 	unset($_SESSION[word]);
 	unset($_SESSION[guesses]);
 	echo '<form action="index.php" method="post">';

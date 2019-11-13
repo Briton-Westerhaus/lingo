@@ -34,16 +34,16 @@ function initializegamearray(){
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"));
-	$_SESSION[user] = array(
+	$_SESSION['user'] = array(
 	array('<input type = "text" name = "0" size = "1" maxlength = "1">','<input type = "text" name = "1" size = "1" maxlength = "1">','<input type = "text" name = "2" size = "1" maxlength = "1">','<input type = "text" name = "3" size = "1" maxlength = "1">','<input type = "text" name = "4" size = "1" maxlength = "1">'),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"),
 	array("&nbsp","&nbsp","&nbsp","&nbsp","&nbsp"));
-	$_SESSION[word] = trim($word);
-	$_SESSION[guesses] = 0;
-	$_SESSION[gameover] = 0;
+	$_SESSION['word'] = trim($word);
+	$_SESSION['guesses'] = 0;
+	$_SESSION['gameover'] = 0;
 }
 function posttostandard($parray){
 	if(sizeof($parray) == 5):
@@ -56,28 +56,28 @@ function posttostandard($parray){
 	endif;
 }
 function processguess($guessarray){
-	if(strtolower($_SESSION[word]) == strtolower(implode($guessarray))):
+	if(strtolower($_SESSION['word']) == strtolower(implode($guessarray))):
 		echo '<h3 align = "center">You won!</h3>';
-		$_SESSION[gameover] = 1;
+		$_SESSION['gameover'] = 1;
 	endif;
-	$temp = $_SESSION[guesses];
-	$_SESSION[guesses]++;
-	$_SESSION[user][$_SESSION[guesses]] = $_SESSION[user][$temp];
-	$_SESSION[user][$temp] = $guessarray;
-	if($_SESSION[guesses] == 5 && strtolower($_SESSION[word]) != strtolower(implode($guessarray))):
+	$temp = $_SESSION['guesses'];
+	$_SESSION['guesses']++;
+	$_SESSION['user'][$_SESSION['guesses']] = $_SESSION['user'][$temp];
+	$_SESSION['user'][$temp] = $guessarray;
+	if($_SESSION['guesses'] == 5 && strtolower($_SESSION['word']) != strtolower(implode($guessarray))):
 		echo '<h3 align ="center">You lost. </h3><br />';
-		echo "The word was $_SESSION[word].";
-		$_SESSION[gameover] = 1;
+		echo "The word was $_SESSION['word'].";
+		$_SESSION['gameover'] = 1;
 	endif;
 	$temp = 0;
 	while($temp < 5):
-		$thearray[] = $_SESSION[word]{$temp};
+		$thearray[] = $_SESSION['word']{$temp};
 		$temp++;
 	endwhile;
 	serverdisplay($guessarray, $thearray);
 }
 function serverdisplay($guesses, $wordarray){
-	$num = $_SESSION[guesses];
+	$num = $_SESSION['guesses'];
 	$temp = 0;
 	$temptwo = 0;
 	while($temp < 5):
@@ -98,7 +98,7 @@ function serverdisplay($guesses, $wordarray){
 	endwhile;
 }
 $server = $_SESSION['server'];
-$user = $_SESSION[user];
+$user = $_SESSION['user'];
 echo "<tr>";
 	$temparray = current($server);
 	foreach($temparray as $temp)
@@ -149,15 +149,15 @@ echo "<tr>";
 echo "</tr>";
 echo "</table>";
 echo "<br />";
-if($_SESSION[gameover] == 0):
+if($_SESSION['gameover'] == 0):
 	echo '<input type="submit" value="Take a guess!" />';
 endif;
 echo "</form>";
-if($_SESSION[gameover] == 1):
-	unset($_SESSION[user]);
+if($_SESSION['gameover'] == 1):
+	unset($_SESSION['user']);
 	unset($_SESSION['server']);
-	unset($_SESSION[word]);
-	unset($_SESSION[guesses]);
+	unset($_SESSION['word']);
+	unset($_SESSION['guesses']);
 	echo '<form action="index.php" method="post">';
 	echo '<input type="submit" value="Play Again?" />';
 	echo '</form>';

@@ -7,13 +7,16 @@ session_start();
 <meta name="description" content="An online version of the Lingo gameshow." />
 <meta name="keywords" content="media, entertainment, fun, games" />
 <meta name="author" content="Briton Westerhaus" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+</head>
+<body>
 <p class="titlebar"></p>
 <div class="content">
 <form action="index.php" method="post">
 <table border="border">
 <tr>
-	<th colspan = "5">Sent from Server to Player</th>
-	<th colspan = "5">Entered by Player</th>
+	<th colspan = "5">Clues</th>
+	<th colspan = "5">Guesses</th>
 </tr>
 <?php
 if(!IsSet($_SESSION['server'])):

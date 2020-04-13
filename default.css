@@ -6,6 +6,36 @@
 
 td, th {
     min-width: 1.5em;
-    height: 1.25em;
+    min-height: 1.25em;
     text-align: center;
+    cursor: default;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.content {
+    text-align: center;
+}
+
+form {
+    position: relative;
+    display: inline-block;
+}
+
+input[type=text] {
+    border: none;
+    cursor: text;
+    font-size: 1em;
+    text-align: center;
+}
+
+td {
+    font-size: 2em;
+    width: 1.5em;
+}
+
+th {
+    font-size: 2.25em;
 }

@@ -29,8 +29,8 @@ input[type=text] {
     font-size: 1em;
     text-align: center;
     width: 100%;
-    border: 1px solid darkgray;
-    box-shadow: 0px -2px 6px 1px lightgray inset
+    border: 1px solid rgb(197, 197, 201);
+    box-shadow: 0px -2px 6px 1px rgb(225, 225, 227) inset;
 }
 
 input[type=submit] {
@@ -39,6 +39,13 @@ input[type=submit] {
     padding: .25em;
     border-radius: 10px;
     cursor: pointer;
+    background-color: rgb(225, 225, 227);
+    box-shadow: -2px -2px 2px 2px rgb(197, 197, 201) inset;
+    border: none;
+}
+input[type=submit]:hover {
+    background-color: rgb(197, 197, 201);
+    box-shadow: 2px 2px 2px 2px rgb(225, 225, 227) inset;
 }
 
 td {

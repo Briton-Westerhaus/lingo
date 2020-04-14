@@ -25,15 +25,26 @@ form {
 }
 
 input[type=text] {
-    border: none;
     cursor: text;
     font-size: 1em;
     text-align: center;
+    width: 100%;
+    border: 1px solid darkgray;
+    box-shadow: 0px -2px 6px 1px lightgray inset
+}
+
+input[type=submit] {
+    font-size: 1.5em;
+    float: right;
+    padding: .25em;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 td {
     font-size: 2em;
     width: 1.5em;
+    padding: .1em;
 }
 
 th {

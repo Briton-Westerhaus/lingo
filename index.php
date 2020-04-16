@@ -8,6 +8,7 @@ session_start();
 <meta name="keywords" content="media, entertainment, fun, games" />
 <meta name="author" content="Briton Westerhaus" />
 <link rel="stylesheet" type="text/css" href="default.css" />
+<script type="text/javascript" src="default.js"></script>
 </head>
 <body>
 <p class="titlebar"></p>

@@ -44,7 +44,7 @@ function initializegamearray(){
 	$_SESSION['user'] = [];
 	$temparray = [];
 	for ($i = 0; $i < 5; $i++) {
-		$temparray[] = '<input type="text" name="' . $i . '" size="1" maxlength="1" id="input' . $i . '">';
+		$temparray[] = '<input type="text" name="' . $i . '" size="1" maxlength="1" id="input' . $i . '" onselect="selectInput(' . $i . ')" onclick="selectInput(' . $i . ')">';
 	}
 	$_SESSION['user'][] = $temparray;
 
@@ -97,6 +97,8 @@ function serverdisplay($guesses, $wordarray){
 	$num = $_SESSION['guesses'];
 	$temp = 0;
 	$temptwo = 0;
+
+	$guesses = array_pad($guesses, 5, '&nbsp;');
 	while($temp < 5):
 		while($temptwo < 5):
 			if($temp == $temptwo && strtolower($wordarray[$temptwo]) == strtolower($guesses[$temp])):

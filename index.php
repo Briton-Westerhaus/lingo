@@ -102,69 +102,29 @@ function serverdisplay($guesses, $wordarray){
 }
 $server = $_SESSION['server'];
 $user = $_SESSION['user'];
-echo "<tr>";
-	$temparray = current($server);
+for ($i = 0; $i < 6; $i++):
+	echo "<tr>";
+	$temparray = $server[$i];
 	foreach($temparray as $temp)
 		echo "<td>$temp</td>";
-	$temparray = current($user);
+	$temparray = $user[$i];
 	foreach($temparray as $temp)
 		echo "<td>$temp</td>";
-echo "</tr>";
-echo "<tr>";
-	$temparray = next($server);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-	$temparray = next($user);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-echo "</tr>";
-echo "<tr>";
-	$temparray = next($server);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-	$temparray = next($user);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-echo "</tr>";
-echo "<tr>";
-	$temparray = next($server);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-	$temparray = next($user);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-echo "</tr>";
-echo "<tr>";
-	$temparray = next($server);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-	$temparray = next($user);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-echo "</tr>";
-echo "<tr>";
-	$temparray = next($server);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-	$temparray = next($user);
-	foreach($temparray as $temp)
-		echo "<td>$temp</td>";
-echo "</tr>";
+	echo "</tr>";
+endfor;
 echo "</table>";
 echo "<br />";
 if($_SESSION['gameover'] == 0):
 	echo '<input type="submit" value="Take a guess!" />';
-endif;
-echo "</form>";
-if($_SESSION['gameover'] == 1):
+else:
 	unset($_SESSION['user']);
 	unset($_SESSION['server']);
 	unset($_SESSION['word']);
 	unset($_SESSION['guesses']);
 	echo '<form action="index.php" method="post">';
 	echo '<input type="submit" value="Play Again?" />';
-	echo '</form>';
 endif;
+echo '</form>';
 ?>
 <h3><center>How to play:</center></h3></br>
 <p>A <font color = "ff0000">RED UPPER CASE</font> letter means that the letter you guessed is the right letter in the right place.</p>

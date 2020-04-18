@@ -26,28 +26,40 @@ else:
 $guessarray = posttostandard($_POST);
 processguess($guessarray);
 endif;
+
 function initializegamearray(){
 	$dictionary = file("words5.txt");
 	$randfinish = rand(1, filesize("words5.txt")/7);
 	$word = $dictionary[$randfinish];
-	$_SESSION['server'] =  array(
-	array('<font color = "FF0000">' . strtoupper($word{0}) . '<font />',"&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"));
-	$_SESSION['user'] = array(
-	array('<input type = "text" name = "0" size = "1" maxlength = "1">','<input type = "text" name = "1" size = "1" maxlength = "1">','<input type = "text" name = "2" size = "1" maxlength = "1">','<input type = "text" name = "3" size = "1" maxlength = "1">','<input type = "text" name = "4" size = "1" maxlength = "1">'),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"),
-	array("&nbsp;","&nbsp;","&nbsp;","&nbsp;","&nbsp;"));
+	$_SESSION['server'] =  [];
+	$_SESSION['server'][] = ['<font color = "FF0000">' . strtoupper($word{0}) . '<font />',"&nbsp;","&nbsp;","&nbsp;","&nbsp;"];
+	for ($i = 1; $i < 6; $i++) {
+		$temparray = [];
+		for ($j = 0; $j < 5; $j++) {
+			$temparray[] = '&nbsp;';
+		}
+		$_SESSION['server'][] = $temparray;
+	}
+
+	$_SESSION['user'] = [];
+	$temparray = [];
+	for ($i = 0; $i < 5; $i++) {
+		$temparray[] = '<input type="text" name="' . $i . '" size="1" maxlength="1" id="input' . $i . '">';
+	}
+	$_SESSION['user'][] = $temparray;
+
+	for ($i = 1; $i < 6; $i++) {
+		$temparray = [];
+		for ($j = 0; $j < 5; $j++) {
+			$temparray[] = '&nbsp;';
+		}
+		$_SESSION['user'][] = $temparray;
+	}
 	$_SESSION['word'] = trim($word);
 	$_SESSION['guesses'] = 0;
 	$_SESSION['gameover'] = 0;
 }
+
 function posttostandard($parray){
 	if(sizeof($parray) == 5):
 		return $parray;
@@ -58,6 +70,7 @@ function posttostandard($parray){
 	return $toreturn;
 	endif;
 }
+
 function processguess($guessarray){
 	if(strtolower($_SESSION['word']) == strtolower(implode($guessarray))):
 		echo '<h3 align = "center">You won!</h3>';
@@ -79,6 +92,7 @@ function processguess($guessarray){
 	endwhile;
 	serverdisplay($guessarray, $thearray);
 }
+
 function serverdisplay($guesses, $wordarray){
 	$num = $_SESSION['guesses'];
 	$temp = 0;
@@ -100,6 +114,7 @@ function serverdisplay($guesses, $wordarray){
 		$temp++;
 	endwhile;
 }
+
 $server = $_SESSION['server'];
 $user = $_SESSION['user'];
 for ($i = 0; $i < 6; $i++):

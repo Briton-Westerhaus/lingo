@@ -44,7 +44,7 @@
 						$_SESSION['user'] = [];
 						$temparray = [];
 						for ($i = 0; $i < 5; $i++) {
-							$temparray[] = '<input type="text" name="' . $i . '" size="1" maxlength="1" id="input' . $i . '" onselect="selectInput(' . $i . ')" onclick="selectInput(' . $i . ')">';
+							$temparray[] = '<input type="text" name="' . $i . '" size="1" maxlength="1" id="input' . $i . '" onselect="selectInput(' . $i . ')" onclick="selectInput(' . $i . ')" oninput="inputChanged(this)">';
 						}
 						$_SESSION['user'][] = $temparray;
 

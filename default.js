@@ -7,6 +7,12 @@ function selectInput(inputNumber) {
     input.select();
 }
 
+function inputChanged(evt) {
+    if (evt.value.length == 1) {
+        selectInput(selectedInput + 1);
+    }
+}
+
 window.onload = function() {
     selectedInput = 0;
     this.selectInput(selectedInput);

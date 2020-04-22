@@ -69,3 +69,13 @@ th {
     text-transform: uppercase;
     color: rgb(0, 0 , 255);
 }
+
+.modal {
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    border: 1px solid black;
+    left: 30%;
+    top: 30%;
+    background-color: white;
+}

@@ -22,7 +22,6 @@ table {
 }
 
 form {
-    position: relative;
     display: inline-block;
 }
 
@@ -45,7 +44,8 @@ input[type=submit], button {
     box-shadow: -2px -2px 2px 2px rgb(197, 197, 201) inset;
     border: none;
 }
-input[type=submit]:hover , button:hover{
+
+input[type=submit]:hover {
     background-color: rgb(197, 197, 201);
     box-shadow: 2px 2px 2px 2px rgb(225, 225, 227) inset;
 }
@@ -76,16 +76,40 @@ th {
     height: 100%;
     position: absolute;
     top: 0px;
-    display: none;
+    /*display: none;*/
 }
 
 .modal {
     width: 40%;
-    height: 40%;
+    height: 30%;
     position: absolute;
     border: 1px solid black;
     left: 30%;
-    top: 30%;
+    top: 35%;
     background-color: white;
     padding: 20px;
+}
+
+.modal h3 {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.modal button {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    display: block;
+    font-size: 1em;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(103, 217, 78);
+    box-shadow: -2px -2px 2px 2px rgb(62, 156, 42) inset;
+}
+
+.modal button:hover{
+    background-color: rgb(62, 156, 42);
+    box-shadow: 2px 2px 2px 2px rgb(103, 217, 78) inset;
 }

@@ -138,11 +138,12 @@
 			</div>
 			<div class="modal-container">
 				<div class="modal">
-					<h3>How to play:</h3>
+					<h3>How to play</h3>
 					<p>A <span class="correct">red upper case</span> letter means that the letter you guessed is the right letter in the right place.</p>
 					<p>A <span class="wrong-place">blue upper case</span> letter means that the letter you guessed is in the word, but not at the position you guessed.</p>
 					<p>A black lower case letter means the letter you guessed is not in the word at all.</p>
 					<p>You have five guesses to get the word right.  If you don't get the word right after the fifth guess, you lose!</p>
+					<button>&#10004;</button>
 				</div>
 			</div>
 		</div>

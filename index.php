@@ -13,6 +13,9 @@
 	</head>
 	<body>
 			<div class="content">
+				<h2>Lingo</h2>
+				<button class="help" onclick="showModal()">?</button>
+				<br />
 				<form action="index.php" method="post">
 				<table>
 					<tr>
@@ -136,14 +139,14 @@
 					echo '</form>';
 				?>
 			</div>
-			<div class="modal-container">
+			<div id="ModalContainer">
 				<div class="modal">
 					<h3>How to play</h3>
 					<p>A <span class="correct">red upper case</span> letter means that the letter you guessed is the right letter in the right place.</p>
 					<p>A <span class="wrong-place">blue upper case</span> letter means that the letter you guessed is in the word, but not at the position you guessed.</p>
 					<p>A black lower case letter means the letter you guessed is not in the word at all.</p>
 					<p>You have five guesses to get the word right.  If you don't get the word right after the fifth guess, you lose!</p>
-					<button>&#10004;</button>
+					<button onclick="hideModal()">&#10004;</button>
 				</div>
 			</div>
 		</div>

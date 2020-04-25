@@ -13,6 +13,14 @@ function inputChanged(evt) {
     }
 }
 
+function showModal() {
+    document.getElementById("ModalContainer").style.display = "block";  
+}
+
+function hideModal() {
+    document.getElementById("ModalContainer").style.display = "None";
+}
+
 window.onload = function() {
     selectedInput = 0;
     this.selectInput(selectedInput);

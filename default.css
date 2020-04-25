@@ -6,7 +6,7 @@
 
 td, th {
     min-width: 1.5em;
-    min-height: 1.25em;
+    height: 1.25em;
     text-align: center;
     cursor: default;
     border: 1px solid black;

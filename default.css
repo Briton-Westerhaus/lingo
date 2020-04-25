@@ -113,6 +113,7 @@ th {
     padding-right: 20px;
     background-color: rgb(136, 235, 162);
     box-shadow: 0px 0px 2px 2px rgb(104, 196, 128) inset;
+    top: 6%;
 }
 
 .modal button:hover {
@@ -121,9 +122,21 @@ th {
 }
 
 button.help{
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: .75em;
+    font-size: .75em;
     float: none;
+    border: 2px ridge rgb(92, 127, 233);
+    padding: 0px;
+    background-color: rgb(184, 202, 255);
+    box-shadow: none;
+    font-weight: bold;
+    position: relative;
+    left: 17em;
 }
 
 button.help:hover {
-
+    background-color: rgb(204, 217, 255);
+    box-shadow: none;/*0px 0px 2px 2px rgb(204, 217, 255) inset;*/
 }

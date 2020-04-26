@@ -21,6 +21,22 @@ function hideModal() {
     document.getElementById("ModalContainer").style.display = "None";
 }
 
+function validateForm() {
+    let value;
+    const form = document.forms["gameForm"];
+
+    if (!!form["playAgain"])
+        return true;
+
+    for (var i = 0; i < 5; i++) {
+        value = form[i.toString()].value ;
+        if (value == undefined || value == "&nbsp;" || value == " " || value == "")
+        return false;
+    }
+
+    return true;
+}
+
 window.onload = function() {
     selectedInput = 0;
     this.selectInput(selectedInput);

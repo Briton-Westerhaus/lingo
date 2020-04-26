@@ -16,7 +16,7 @@
 				<h2>Lingo</h2>
 				<button class="help" onclick="showModal()">?</button>
 				<br />
-				<form action="index.php" method="post">
+				<form action="index.php" method="post" name="gameForm" onsubmit="return validateForm();">
 				<table>
 					<tr>
 						<th colspan = "5">Clues</th>
@@ -134,7 +134,7 @@
 						unset($_SESSION['server']);
 						unset($_SESSION['word']);
 						unset($_SESSION['guesses']);
-						echo '<input type="submit" value="Play Again?" />';
+						echo '<input type="submit" value="Play Again?" name="playAgain"/>';
 					endif;
 					echo '</form>';
 				?>

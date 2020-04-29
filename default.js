@@ -23,16 +23,20 @@ function hideModal() {
 
 function validateForm() {
     let value;
+    let numLetters = 0;
     const form = document.forms["gameForm"];
 
     if (!!form["playAgain"])
         return true;
 
     for (var i = 0; i < 5; i++) {
-        value = form[i.toString()].value ;
-        if (value == undefined || value == "&nbsp;" || value == " " || value == "")
-        return false;
+        value = form[i.toString()].value;
+        if (value != undefined && value != "&nbsp;" && value != " " && value != "")
+            numLetters++;
     }
+
+    if (numLetters < 5)
+        return confirm("You've only guessed " + numLetters + " letter" + (numLetters == 1 ? "" : "s") + ". \n\nAre you sure this is your guess?");
 
     return true;
 }

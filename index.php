@@ -33,7 +33,7 @@
 					function initializegamearray(){
 						$dictionary = file("words5.txt");
 						$randfinish = rand(1, filesize("words5.txt")/7);
-						$word = $dictionary[$randfinish];
+						$word = trim($dictionary[$randfinish]);
 						$_SESSION['server'] =  [];
 						$_SESSION['server'][] = ['<span class="correct">' . strtoupper($word{0}) . '</span>',"&nbsp;","&nbsp;","&nbsp;","&nbsp;"];
 						for ($i = 1; $i < 6; $i++) {
@@ -58,7 +58,7 @@
 							}
 							$_SESSION['user'][] = $temparray;
 						}
-						$_SESSION['word'] = trim($word);
+						$_SESSION['word'] = $word;
 						$_SESSION['guesses'] = 0;
 						$_SESSION['gameover'] = 0;
 					}

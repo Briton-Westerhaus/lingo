@@ -31,9 +31,23 @@
 					}
 
 					function initializegamearray(){
-						$dictionary = file("words5.txt");
-						$randfinish = rand(1, filesize("words5.txt")/7);
-						$word = trim($dictionary[$randfinish]);
+						$cipher = $cipher = "aes-128-cbc";
+						$ivlen = openssl_cipher_iv_length($cipher);
+
+						$file = fopen("words.txt","r");
+
+						$iv = fread($file, $ivlen);
+
+						$wordCount = (filesize("words.txt") - $ivlen) / 22;
+					
+						$rand = rand(0, $wordCount);
+					
+						fseek($file, $ivlen + $rand * 22);
+						$encrypted = fread($file, 22) . "==";
+
+						$word = openssl_decrypt($encrypted, $cipher, "Briton Westerhaus Lingo", 0, $iv);
+						echo $word . "<br />";
+
 						$_SESSION['server'] =  [];
 						$_SESSION['server'][] = ['<span class="correct">' . strtoupper($word{0}) . '</span>',"&nbsp;","&nbsp;","&nbsp;","&nbsp;"];
 						for ($i = 1; $i < 6; $i++) {

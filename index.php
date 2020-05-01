@@ -46,7 +46,6 @@
 						$encrypted = fread($file, 22) . "==";
 
 						$word = openssl_decrypt($encrypted, $cipher, "Briton Westerhaus Lingo", 0, $iv);
-						echo $word . "<br />";
 
 						$_SESSION['server'] =  [];
 						$_SESSION['server'][] = ['<span class="correct">' . strtoupper($word{0}) . '</span>',"&nbsp;","&nbsp;","&nbsp;","&nbsp;"];

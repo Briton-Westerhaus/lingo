@@ -142,27 +142,29 @@
 
 						$server = $_SESSION['server'];
 						$user = $_SESSION['user'];
-						for ($i = 0; $i < 6; $i++):
+						for ($i = 0; $i < 6; $i++) {
 							echo "<tr>";
 							$temparray = $server[$i];
-							foreach($temparray as $temp)
+							foreach ($temparray as $temp) {
 								echo "<td>$temp</td>";
+							}
 							$temparray = $user[$i];
-							foreach($temparray as $temp)
+							foreach ($temparray as $temp) {
 								echo "<td>$temp</td>";
+							}
 							echo "</tr>";
-						endfor;
+						}
 						echo "</table>";
 						echo "<br />";
-						if($_SESSION['gameover'] == 0):
+						if($_SESSION['gameover'] == 0) {
 							echo '<input type="submit" value="Take a guess!" />';
-						else:
+						} else {
 							unset($_SESSION['user']);
 							unset($_SESSION['server']);
 							unset($_SESSION['word']);
 							unset($_SESSION['guesses']);
 							echo '<input type="submit" value="Play Again?" name="playAgain"/>';
-						endif;
+						}
 						echo '</form>';
 					}
 				?>

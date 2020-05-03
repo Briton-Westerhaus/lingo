@@ -112,7 +112,6 @@
 					}
 
 					if (isset($_POST['numLetters']) &&  is_numeric($_POST['numLetters'])) {
-						echo $_POST['numLetters'];
 						$_SESSION['numLetters'] = $_POST['numLetters'];
 					}
 					if (!isset($_SESSION['numLetters'])) {

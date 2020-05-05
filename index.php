@@ -33,8 +33,14 @@
 						$word = openssl_decrypt($encrypted, $cipher, "Briton Westerhaus Lingo", 0, $iv);
 
 						$_SESSION['server'] =  [];
-						$_SESSION['server'][] = ['<span class="correct">' . strtoupper($word{0}) . '</span>',"&nbsp;","&nbsp;","&nbsp;","&nbsp;"];
-						for ($i = 1; $i < 6; $i++) {
+
+						$first_array = ['<span class="correct">' . strtoupper($word{0}) . '</span>'];
+						for ($i = 1; $i < $_SESSION['numLetters']; $i++) {
+							$first_array[] = "&nbsp;";
+						}
+						$_SESSION['server'][] = $first_array;
+
+						for ($i = 1; $i < $_SESSION['numLetters'] + 1; $i++) {
 							$temparray = [];
 							for ($j = 0; $j < $_SESSION['numLetters']; $j++) {
 								$temparray[] = '&nbsp;';
@@ -144,7 +150,7 @@
 
 						$server = $_SESSION['server'];
 						$user = $_SESSION['user'];
-						for ($i = 0; $i < 6; $i++) {
+						for ($i = 0; $i < $_SESSION['numLetters'] + 1; $i++) {
 							echo "<tr>";
 							$temparray = $server[$i];
 							foreach ($temparray as $temp) {

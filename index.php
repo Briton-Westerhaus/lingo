@@ -19,11 +19,11 @@
 						$cipher = $cipher = "aes-128-cbc";
 						$ivlen = openssl_cipher_iv_length($cipher);
 
-						$file = fopen("words.txt","r");
+						$file = fopen("words5.txt","r");
 
 						$iv = fread($file, $ivlen);
 
-						$wordCount = (filesize("words.txt") - $ivlen) / 22;
+						$wordCount = (filesize("words5.txt") - $ivlen) / 22;
 
 						$rand = rand(0, $wordCount);
 

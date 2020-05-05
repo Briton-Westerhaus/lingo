@@ -1,12 +1,12 @@
     <?php
     $file = fopen("words5.txt","r");
-    $file2 = fopen("words.txt", "w");
+    $file2 = fopen("encrypted5.txt", "w");
 
     $iv = openssl_random_pseudo_bytes(16);
 
     fwrite($file2, $iv);
 
-    while(! feof($file)) {
+    while(!feof($file)) {
         $word = trim(fgets($file));
         $cipher = "aes-128-cbc";
         
@@ -17,11 +17,11 @@
     fclose($file);
     fclose($file2);
 
-    $file = fopen("words.txt","r");
+    $file = fopen("encrypted5.txt","r");
 
     $iv = fread($file, 16);
 
-    $wordCount = (filesize("words.txt") - 16) / 22;
+    $wordCount = (filesize("encrypted5.txt") - 16) / 22;
 
     /*while(! feof($file)) {
         $word = trim(fread($file, 22)) . "==";
@@ -34,8 +34,6 @@
     $rand = rand(0, $wordCount);
 
     fseek($file, 16 + $rand * 22);
-
-    echo $iv;
 
     $word = trim(fread($file, 22)) . "==";
     $cipher = "aes-128-cbc";

@@ -19,11 +19,11 @@
 						$cipher = $cipher = "aes-128-cbc";
 						$ivlen = openssl_cipher_iv_length($cipher);
 
-						$file = fopen("words5.txt","r");
+						$file = fopen("encrypted" . $_SESSION['numLetters'] . ".txt","r");
 
 						$iv = fread($file, $ivlen);
 
-						$wordCount = (filesize("words5.txt") - $ivlen) / 22;
+						$wordCount = (filesize("encrypted" . $_SESSION['numLetters'] . ".txt") - $ivlen) / 22;
 
 						$rand = rand(0, $wordCount);
 
@@ -36,7 +36,7 @@
 						$_SESSION['server'][] = ['<span class="correct">' . strtoupper($word{0}) . '</span>',"&nbsp;","&nbsp;","&nbsp;","&nbsp;"];
 						for ($i = 1; $i < 6; $i++) {
 							$temparray = [];
-							for ($j = 0; $j < 5; $j++) {
+							for ($j = 0; $j < $_SESSION['numLetters']; $j++) {
 								$temparray[] = '&nbsp;';
 							}
 							$_SESSION['server'][] = $temparray;
@@ -44,14 +44,14 @@
 
 						$_SESSION['user'] = [];
 						$temparray = [];
-						for ($i = 0; $i < 5; $i++) {
+						for ($i = 0; $i < $_SESSION['numLetters']; $i++) {
 							$temparray[] = '<input type="text" name="' . $i . '" size="1" maxlength="1" id="input' . $i . '" onselect="selectInput(' . $i . ')" onclick="selectInput(' . $i . ')" oninput="inputChanged(this)">';
 						}
 						$_SESSION['user'][] = $temparray;
 
-						for ($i = 1; $i < 6; $i++) {
+						for ($i = 1; $i < $_SESSION['numLetters'] + 1; $i++) {
 							$temparray = [];
-							for ($j = 0; $j < 5; $j++) {
+							for ($j = 0; $j < $_SESSION['numLetters']; $j++) {
 								$temparray[] = '&nbsp;';
 							}
 							$_SESSION['user'][] = $temparray;
@@ -62,7 +62,7 @@
 					}
 
 					function posttostandard($parray){
-						if (sizeof($parray) == 5) {
+						if (sizeof($parray) == $_SESSION['numLetters']) {
 							return $parray;
 						} else {
 							$toreturn = array();
@@ -80,13 +80,13 @@
 						$_SESSION['guesses']++;
 						$_SESSION['user'][$_SESSION['guesses']] = $_SESSION['user'][$temp];
 						$_SESSION['user'][$temp] = $guessarray;
-						if ($_SESSION['guesses'] == 5 && strtolower($_SESSION['word']) != strtolower(implode($guessarray))) {
+						if ($_SESSION['guesses'] == $_SESSION['numLetters'] && strtolower($_SESSION['word']) != strtolower(implode($guessarray))) {
 							echo '<h3 align ="center">You lost. </h3><br />';
 							echo "The word was $_SESSION[word].";
 							$_SESSION['gameover'] = 1;
 						}
 						$temp = 0;
-						for ($i = 0; $i < 5; $i++) {
+						for ($i = 0; $i < $_SESSION['numLetters']; $i++) {
 							$thearray[] = $_SESSION['word'][$i];
 						}
 						serverdisplay($guessarray, $thearray);
@@ -94,10 +94,10 @@
 
 					function serverdisplay($guesses, $wordarray){
 						$num = $_SESSION['guesses'];
-						$guesses = array_pad($guesses, 5, '&nbsp;');
+						$guesses = array_pad($guesses, $_SESSION['numLetters'], '&nbsp;');
 
-						for ($i = 0; $i < 5; $i++) {
-							for ($j = 0; $j < 5; $j++) {
+						for ($i = 0; $i < $_SESSION['numLetters']; $i++) {
+							for ($j = 0; $j < $_SESSION['numLetters']; $j++) {
 								if ($i == $j && strtolower($wordarray[$j]) == strtolower($guesses[$i])) {
 									$_SESSION['server'][$num][$i] = ('<span class="correct">' . strtoupper($guesses[$i]) . '</span>');
 								}
@@ -131,8 +131,8 @@
 				<form action="index.php" method="post" name="gameForm" onsubmit="return validateForm();">
 				<table>
 					<tr>
-						<th colspan = "5">Clues</th>
-						<th colspan = "5">Guesses</th>
+						<th colspan="<?php echo $_SESSION['numLetters']; ?>">Clues</th>
+						<th colspan="<?php echo $_SESSION['numLetters']; ?>">Guesses</th>
 					</tr>
 				<?php
 						if (!isset($_SESSION['server'])) {

@@ -21,9 +21,9 @@ function hideModal() {
     document.getElementById("ModalContainer").style.display = "None";
 }
 
-function validateForm() {
+function validateForm(numLetters) {
     let value;
-    let numLetters = 0;
+    let lettersGuessed = 0;
     const form = document.forms["gameForm"];
 
     if (!!form["playAgain"])
@@ -32,11 +32,11 @@ function validateForm() {
     for (var i = 0; i < 5; i++) {
         value = form[i.toString()].value;
         if (value != undefined && value != "&nbsp;" && value != " " && value != "")
-            numLetters++;
+        lettersGuessed++;
     }
 
-    if (numLetters < 5)
-        return confirm("You've only guessed " + numLetters + " letter" + (numLetters == 1 ? "" : "s") + ". \n\nAre you sure this is your guess?");
+    if (lettersGuessed < numLetters)
+        return confirm("You've only guessed " + lettersGuessed + " letter" + (lettersGuessed == 1 ? "" : "s") + ". \n\nAre you sure this is your guess?");
 
     return true;
 }
@@ -46,7 +46,7 @@ window.onload = function() {
     this.selectInput(selectedInput);
 }
 
-document.onkeydown = function(evt) {
+document.onkeydown = function(evt, numLetters) {
     switch(evt.keyCode) {
         case 37: //left arrow
             if (selectedInput > 0) {

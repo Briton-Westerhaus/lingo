@@ -9,6 +9,9 @@
 		<meta name="keywords" content="media, entertainment, fun, games" />
 		<meta name="author" content="Briton Westerhaus" />
 		<link rel="stylesheet" type="text/css" href="default.css" />
+		<script type="text/javascript">
+			const numLetters = <?php echo $_SESSION['numLetters']; ?>;
+		</script>
 		<script type="text/javascript" src="default.js"></script>
 	</head>
 	<body>
@@ -51,7 +54,7 @@
 						$_SESSION['user'] = [];
 						$temparray = [];
 						for ($i = 0; $i < $_SESSION['numLetters']; $i++) {
-							$temparray[] = '<input type="text" name="' . $i . '" size="1" maxlength="1" id="input' . $i . '" onselect="selectInput(' . $i . ')" onclick="selectInput(' . $i . ')" oninput="inputChanged(this, $_SESSION[numLetters])">';
+							$temparray[] = '<input type="text" name="' . $i . '" size="1" maxlength="1" id="input' . $i . '" onselect="selectInput(' . $i . ')" onclick="selectInput(' . $i . ')" oninput="inputChanged(this)">';
 						}
 						$_SESSION['user'][] = $temparray;
 
@@ -134,7 +137,7 @@
 				?>
 				<button class="help" onclick="showModal()">?</button>
 				<br />
-				<form action="index.php" method="post" name="gameForm" onsubmit="return validateForm(<?php echo $_SESSION['numLetters']; ?>);">
+				<form action="index.php" method="post" name="gameForm" onsubmit="return validateForm();">
 				<table>
 					<tr>
 						<th colspan="<?php echo $_SESSION['numLetters']; ?>">Clues</th>

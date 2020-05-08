@@ -18,7 +18,7 @@
 			<div class="content">
 				<h2>Lingo</h2>
 				<?php
-					function initializegamearray(){
+					function initializegamearray() {
 						$cipher = $cipher = "aes-128-cbc";
 						$ivlen = openssl_cipher_iv_length($cipher);
 
@@ -120,9 +120,18 @@
 						}
 					}
 
+					if (isset($_POST['changeNumLetters'])) {
+						unset($_SESSION['numLetters']);
+						unset($_SESSION['user']);
+						unset($_SESSION['server']);
+						unset($_SESSION['word']);
+						unset($_SESSION['guesses']);
+					}
+
 					if (isset($_POST['numLetters']) &&  is_numeric($_POST['numLetters'])) {
 						$_SESSION['numLetters'] = $_POST['numLetters'];
 					}
+
 					if (!isset($_SESSION['numLetters'])) {
 				?>
 				<h3>How many letters and guesses?</h3>
@@ -176,6 +185,7 @@
 							unset($_SESSION['guesses']);
 							echo '<input type="submit" value="Play Again?" name="playAgain"/>';
 						}
+						echo '<input type="submit" value="Change Number of Letters" name="changeNumLetters"/>';
 						echo '</form>';
 					}
 				?>

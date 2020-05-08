@@ -26,17 +26,23 @@ function validateForm() {
     let lettersGuessed = 0;
     const form = document.forms["gameForm"];
 
-    if (!!form["playAgain"])
+    if (!!form["playAgain"]) {
         return true;
 
-    for (let i = 0; i < numLetters; i++) {
-        value = form[i.toString()].value;
-        if (value != undefined && value != "&nbsp;" && value != " " && value != "")
-            lettersGuessed++;
-    }
+    } else if (form["changeNumLetters"]) {
+        return confirm("Are you sure? This will end your current game.")
+    } else {
 
-    if (lettersGuessed < numLetters)
-        return confirm("You've only guessed " + lettersGuessed + " letter" + (lettersGuessed == 1 ? "" : "s") + ". \n\nAre you sure this is your guess?");
+        for (let i = 0; i < numLetters; i++) {
+            value = form[i.toString()].value;
+            if (value != undefined && value != "&nbsp;" && value != " " && value != "")
+                lettersGuessed++;
+        }
+
+        if (lettersGuessed < numLetters)
+            return confirm("You've only guessed " + lettersGuessed + " letter" + (lettersGuessed == 1 ? "" : "s") + ". \n\nAre you sure this is your guess?");
+
+    }
 
     return true;
 }

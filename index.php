@@ -136,10 +136,10 @@
 				?>
 				<h3>How many letters and guesses?</h3>
 				<form action="index.php" method="post" name="gameForm">
-					<input type="submit" name="numLetters" value= "7" />
-					<input type="submit" name="numLetters" value= "6" />
-					<input type="submit" name="numLetters" value= "5" />
-					<input type="submit" name="numLetters" value= "4" />
+					<input class="numButton" type="submit" name="numLetters" value= "7" />
+					<input class="numButton" type="submit" name="numLetters" value= "6" />
+					<input class="numButton" type="submit" name="numLetters" value= "5" />
+					<input class="numButton" type="submit" name="numLetters" value= "4" />
 				</form>
 				<?php
 					} else {
@@ -185,7 +185,7 @@
 							unset($_SESSION['guesses']);
 							echo '<input type="submit" value="Play Again?" name="playAgain"/>';
 						}
-						echo '<input type="submit" value="Change Number of Letters" name="changeNumLetters"/>';
+						echo '<input type="submit" style="margin-right: 5%;" value="&#8592;" name="changeNumLetters"/>';
 						echo '</form>';
 					}
 				?>

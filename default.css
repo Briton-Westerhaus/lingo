@@ -140,3 +140,11 @@ button.help:hover {
     background-color: rgb(204, 217, 255);
     box-shadow: none;/*0px 0px 2px 2px rgb(204, 217, 255) inset;*/
 }
+
+
+.numButton {
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: .75em!important;
+    margin: .5em;
+}

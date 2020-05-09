@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if (isset($_POST['numLetters']) &&  is_numeric($_POST['numLetters'])) {
+		$_SESSION['numLetters'] = $_POST['numLetters'];
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -128,14 +131,10 @@
 						unset($_SESSION['guesses']);
 					}
 
-					if (isset($_POST['numLetters']) &&  is_numeric($_POST['numLetters'])) {
-						$_SESSION['numLetters'] = $_POST['numLetters'];
-					}
-
 					if (!isset($_SESSION['numLetters'])) {
 				?>
 				<h3>How many letters and guesses?</h3>
-				<form action="index.php" method="post" name="gameForm">
+				<form action="index.php" method="post" name="gameForm" id="GameForm">
 					<input class="numButton" type="submit" name="numLetters" value= "7" />
 					<input class="numButton" type="submit" name="numLetters" value= "6" />
 					<input class="numButton" type="submit" name="numLetters" value= "5" />
@@ -185,8 +184,14 @@
 							unset($_SESSION['guesses']);
 							echo '<input type="submit" value="Play Again?" name="playAgain"/>';
 						}
-						echo '<input type="submit" style="margin-right: 5%;" value="&#8592;" name="changeNumLetters"/>';
-						echo '</form>';
+				?>
+					</form>
+					<br />
+					<br />
+					<form action="index.php" method="post" style="width: <?php echo 6.9 * $_SESSION['numLetters']; ?>em;">
+						<input type="submit" onclick="return confirm('Are you sure? \nThis will quit your current game.');" value="&#8592; Back" name="changeNumLetters" />	
+					</form>
+				<?php
 					}
 				?>
 			</div>

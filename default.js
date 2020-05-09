@@ -1,4 +1,5 @@
 let selectedInput;
+let changeNumLetters = false;
 
 function selectInput(inputNumber) {
     selectedInput = inputNumber;
@@ -29,8 +30,6 @@ function validateForm() {
     if (!!form["playAgain"]) {
         return true;
 
-    } else if (form["changeNumLetters"]) {
-        return confirm("Are you sure? This will end your current game.")
     } else {
 
         for (let i = 0; i < numLetters; i++) {

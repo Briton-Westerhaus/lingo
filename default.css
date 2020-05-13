@@ -19,6 +19,11 @@ h2 {
     letter-spacing: .025em;
 }
 
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
 td, th {
     min-width: 1.5em;
     height: 1.25em;
@@ -151,8 +156,9 @@ button.help:hover {
 
 
 .numButton {
-    height: 1.5em;
-    width: 1.5em;
-    border-radius: .75em!important;
+    height: 2em;
+    width: 2em;
+    border-radius: 1em!important;
     margin: .5em;
+    font-weight: bold;
 }

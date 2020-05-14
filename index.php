@@ -20,6 +20,7 @@
 	<body>
 			<div class="content">
 				<h2>Lingo</h2>
+				<button class="help" onclick="showModal()">?</button>
 				<?php
 					function initializegamearray() {
 						$cipher = $cipher = "aes-128-cbc";
@@ -122,7 +123,7 @@
 							}
 						}
 					}
-
+					
 					if (isset($_POST['changeNumLetters'])) {
 						unset($_SESSION['numLetters']);
 						unset($_SESSION['user']);
@@ -143,7 +144,6 @@
 				<?php
 					} else {
 				?>
-				<button class="help" onclick="showModal()">?</button>
 				<br />
 				<form action="index.php" method="post" name="gameForm" onsubmit="return validateForm();">
 				<table>

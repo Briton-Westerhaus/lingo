@@ -199,9 +199,41 @@
 				<div class="modal">
 					<h3>How to play</h3>
 					<p>A <span class="correct">red upper case</span> letter means that the letter you guessed is the right letter in the right place.</p>
-					<p>A <span class="wrong-place">blue upper case</span> letter means that the letter you guessed is in the word, but not at the position you guessed.</p>
+					<p>A <span class="wrong-place">blue upper case</span> letter means that the letter you guessed is in the word, but at a different place.</p>
 					<p>A black lower case letter means the letter you guessed is not in the word at all.</p>
-					<p>You have five guesses to get the word right.  If you don't get the word right after the fifth guess, you lose!</p>
+					<?php 
+						if (isset($_SESSION['numLetters'])) {
+							switch ($_SESSION['numLetters']) {
+								case 4:
+									$number_word = "four";
+									$ordinal_word = "fourth";
+									break;
+
+								case 5:
+									$number_word = "five";
+									$ordinal_word = "fifth";
+									break;
+
+								case 6:
+									$number_word = "six";
+									$ordinal_word = "sixth";
+									break;
+
+								case 7:
+									$number_word = "seven";
+									$ordinal_word = "seventh";
+									break;
+
+								default: // Default to 5 because why not?
+									$number_word = "five";
+									$ordinal_word = "fifth";
+									break;
+							}
+					?>
+					<p>You have <?php echo $number_word; ?> guesses to get the word right.  If you don't get the word right after the <?php echo $ordinal_word; ?> guess, you lose!</p>
+					<?php } else { ?>
+					<p>You can choose the number of letters in the word you are guessing. You will also have that many chances to guess, before you lose!</p>
+					<?php } ?>
 					<button onclick="hideModal()">&#10004;</button>
 				</div>
 			</div>

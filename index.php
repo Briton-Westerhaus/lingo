@@ -95,7 +95,7 @@
 						$_SESSION['user'][$temp] = $guessarray;
 						if ($_SESSION['guesses'] == $_SESSION['numLetters'] && strtolower($_SESSION['word']) != strtolower(implode($guessarray))) {
 							echo '<h3 align ="center">You lost. </h3><br />';
-							echo "The word was $_SESSION[word].";
+							echo "<p>The word was $_SESSION[word].</p>";
 							$_SESSION['gameover'] = 1;
 						}
 						$temp = 0;
@@ -189,7 +189,7 @@
 					<br />
 					<br />
 					<form action="index.php" method="post" style="width: <?php echo 6.9 * $_SESSION['numLetters']; ?>em;">
-						<input type="submit" onclick="return confirm('Are you sure? \nThis will quit your current game.');" value="&#8592; Back" name="changeNumLetters" />	
+						<input type="submit" onclick="return (<?php echo $_SESSION['gameover']; ?> == 1 ? true : confirm('Are you sure? \nThis will quit your current game.'));" value="&#8592; Back" name="changeNumLetters" />	
 					</form>
 				<?php
 					}

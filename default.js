@@ -4,12 +4,14 @@ let changeNumLetters = false;
 function selectInput(inputNumber) {
     selectedInput = inputNumber;
     let input = document.getElementById("input" + inputNumber);
-    input.focus();
-    input.select();
-}
+    if (!!input) {
+        input.focus();
+        input.select();
+    }
+    }
 
 function inputChanged(evt) {
-    if (evt.value.length == 1) {
+    if (evt.value.length == 1 && selectedInput < numLetters - 1) {
         selectInput(selectedInput + 1);
     }
 }
@@ -60,19 +62,21 @@ document.onkeydown = function(evt) {
             break;
         
         case 39: //right arrow
-            if (selectedInput < numLetters) {
+        case 9: //tab
+            if (selectedInput < numLetters - 1) {
                 selectInput(selectedInput + 1);
             }
             break;
+
+        case 8: //backspace
+            let input = document.getElementById("input" + selectedInput);
+            if (!input.value && selectedInput > 0) {
+                selectInput(selectedInput - 1);
+            }
+            break;    
 
         default:
             break;
     }
     
-}
-
-document.onkeypress = function(evt) {
-    if (evt.keyCode == 9 && selectedInput < 5) {
-        selectInput(selectedInput + 1);
-    } 
 }

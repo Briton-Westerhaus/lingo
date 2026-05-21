@@ -41,7 +41,7 @@
 
 						$_SESSION['server'] =  [];
 
-						$first_array = ['<span class="correct">' . strtoupper($word{0}) . '</span>'];
+						$first_array = ['<span class="correct">' . strtoupper($word[0]) . '</span>'];
 						for ($i = 1; $i < $_SESSION['numLetters']; $i++) {
 							$first_array[] = "&nbsp;";
 						}
